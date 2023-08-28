@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        .p-container{
+            height: 70vh;
+            width: 70vw;
+            margin: auto;
+            background-color: violet;
+            background-image: url('https://images-eu.ssl-images-amazon.com/images/I/C1nnlPFVZwS.png');
+            border: 2px solid white;
+            border-radius: 25px;
+            filter: blur(4px);
+            z-index: -1;
+        }
+        .box{
+            transform: translate(14.5%, -135%);
+        }
+        .container{
+            height: 50vh;
+            width: 70vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title{
+            height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            color: black;
+            font-size: 10vh;
+            font-style: bold;
+            transform: translate(0, -450%);
+        }
+
+        .container .hour{
+            text-align: center;
+        }
+
+        .container .hour-container{
+            height: 40vh;
+            width: 20vw;
+            background-color: yellow;
+            font-size: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border-radius: 25px;
+            opacity: 0.6;
+            filter: drop-shadow(5px);
+            z-index: 5;
+        }
+
+        .container .minute{
+            text-align: center;
+        }
+
+        .container .minute-container{
+            height: 40vh;
+            width: 20vw;
+            background-color: lightgreen;
+            font-size: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border-radius: 25px;
+            opacity: 0.6;
+        }
+        .second{
+            font-weight: lighter;
+            color: black;
+        }
+        .second-container{
+            height: 40vh;
+            width: 20vw;
+            background-color: aqua;
+            font-size: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            border-radius: 25px;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="p-container">
+    </div>
+    <div class="title">
+        DIGITAL CLOCK
+    </div>
+    <div class="box">
+    
+    <div class="container">
+      <div class="hour-container">
+        <div>
+         <p class="hour"></p>
+        </div>
+      </div>
+      <div class="minute-container">
+        <p class="minute"></p>
+      </div>
+      <div class="second-container">
+        <p class="second"></p>
+      </div>
+    </div>
+</div>
+</body>
+<script>
+    let date = new Date();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+    document.getElementsByClassName('hour')[0].innerHTML = hour;
+    document.getElementsByClassName('minute')[0].innerHTML = minute;
+    document.getElementsByClassName('second')[0].innerHTML = 0;
+    
+    setInterval(() => {
+        document.getElementsByClassName('hour')[0].innerHTML = (Number.parseInt(document.getElementsByClassName('hour')[0].innerHTML) + 1);
+    },3600000);
+    setInterval(() => {
+        if(Number.parseInt(document.getElementsByClassName('minute')[0].innerHTML) == 59){
+            document.getElementsByClassName('minute')[0].innerHTML = 0;
+        }else{
+        document.getElementsByClassName('minute')[0].innerHTML = (Number.parseInt(document.getElementsByClassName('minute')[0].innerHTML) + 1);
+        }
+    },60000);
+    setInterval(() => {
+        if(Number.parseInt(document.getElementsByClassName('second')[0].innerHTML) == 59){
+            document.getElementsByClassName('second')[0].innerHTML = 0;
+        }else{
+        document.getElementsByClassName('second')[0].innerHTML = (Number.parseInt(document.getElementsByClassName('second')[0].innerHTML) + 1);
+        }
+    },1000);
+</script>
+</html>
